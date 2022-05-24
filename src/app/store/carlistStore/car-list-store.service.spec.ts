@@ -28,12 +28,17 @@ describe('CarListStoreService', () => {
 
   it('should GET all cars in stock listed in the database', () => {
     carListStoreService.carsToDisplay$.subscribe(cars => {
+      console.log(cars[`BMW`])
       expect(cars).toBeTruthy('No cars returned');
+      // expect(cars[`BMW`].price).toEqual(10000); // to check price
+
     });
+
+    carListStoreService.init();
 
     const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
     expect(req.request.method).toEqual('GET');
-    req.flush({payload: Object.values(CARSlIST)});
+    req.flush(CARSlIST);
   });
 
 
