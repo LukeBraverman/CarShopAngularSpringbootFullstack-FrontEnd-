@@ -4,7 +4,9 @@ import { ShopLandingpageComponent } from './shop-landingpage.component';
 import {DebugElement} from "@angular/core";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, of} from "rxjs";
+import {CARSlIST} from "../fakedata/fakedata";
+import {By} from "@angular/platform-browser";
 
 describe('ShopLandingpageComponent', () => {
   let component: ShopLandingpageComponent;
@@ -13,7 +15,7 @@ describe('ShopLandingpageComponent', () => {
   let carListStoreService: any;
 
   beforeEach(waitForAsync(() => {
-    const carListStoreServiceSpy = jasmine.createSpyObj('CarListStoreService', ['init']);
+    const carListStoreServiceSpy = jasmine.createSpyObj('CarListStoreService', ['onReturnCarsToDisplayObservable']);
 
     TestBed.configureTestingModule({
       imports: [
@@ -37,8 +39,14 @@ describe('ShopLandingpageComponent', () => {
   });
 
   it('should display a card for each car retrieved', () => {
-    carListStoreService.carsToDisplay$ = new Observable<any>();
+    carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(of(CARSlIST));
 
-    carListStoreService.carsToDisplay$.emit
+    fixture.detectChanges();
+
+    const tabs = el.queryAll(By.css('.mat-card'));
+
+    expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
+
+
   })
 });

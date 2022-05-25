@@ -41,7 +41,7 @@ describe('CarListStoreService', () => {
     req.flush(CARSlIST);
   });
 
-  fit('should GET all 3 cars database', waitForAsync(() => {
+  it('should GET all 3 cars database', waitForAsync(() => {
     carListStoreService.carsToDisplay$.pipe(skip(1)).subscribe(cars => {
       console.log(cars.length)
       expect(cars.length).toEqual(3);
@@ -56,66 +56,8 @@ describe('CarListStoreService', () => {
     req.flush(CARSlIST);
   }));
 
-  // it('should GET all cars in database', () => {
-  //   carListStoreService.carsToDisplay$.subscribe(cars => {
-  //     // expect(cars.length).toEqual(3);
-  //     // expect(cars[`BMW`].price).toEqual(10000); // to check price
-  //
-  //   });
-  //
-  //   carListStoreService.init();
-  //
-  //   const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
-  //   expect(req.request.method).toEqual('GET');
-  //   req.flush(returnFakeData());
-  // });
-
-
-  // it('should  GET bmw car data', () => {
-  //   carListStoreService.carsToDisplay$.subscribe(cars => {
-  //     expect(cars[`BMW`].uid).toEqual('AAA');
-  //     // expect(cars[`BMW`].price).toEqual(10000); // to check price
-  //
-  //   });
-  //
-  //   carListStoreService.init();
-  //
-  //   const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
-  //   expect(req.request.method).toEqual('GET');
-  //   req.flush(CARSlIST);
-  // });
-  //
-  // it('should  GET toyota car data', () => {
-  //   carListStoreService.carsToDisplay$.subscribe(cars => {
-  //     expect(cars[`TOYOTA`].uid).toEqual('BBB');
-  //     // expect(cars[`BMW`].price).toEqual(10000); // to check price
-  //
-  //   });
-  //
-  //   carListStoreService.init();
-  //
-  //   const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
-  //   expect(req.request.method).toEqual('GET');
-  //   req.flush(CARSlIST);
-  // });
-  //
-  // it('should  GET honda car data', () => {
-  //   carListStoreService.carsToDisplay$.subscribe(cars => {
-  //     expect(cars[`HONDA`].uid).toEqual('CCC');
-  //     // expect(cars[`BMW`].price).toEqual(10000); // to check price
-  //
-  //   });
-  //
-  //   carListStoreService.init();
-  //
-  //   const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
-  //   expect(req.request.method).toEqual('GET');
-  //   req.flush(CARSlIST);
-  // });
-  //
-  // afterEach(() => {
-  //   httpTestingController.verify();
-  // });
-
+  afterEach(() => {
+    httpTestingController.verify();
+  });
 
 });

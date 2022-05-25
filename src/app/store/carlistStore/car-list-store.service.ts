@@ -11,7 +11,7 @@ export class CarListStoreService {
 
   private subject = new BehaviorSubject<CarToBuyModel[] >([]);
 
-  private carsToDisplay$: Observable<CarToBuyModel[]> = this.subject.asObservable();
+  public carsToDisplay$: Observable<CarToBuyModel[]> = this.subject.asObservable();
 
 
   onReturnCarsToDisplayObservable() {
