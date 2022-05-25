@@ -51,3 +51,13 @@ describe('ShopLandingpageComponent', () => {
 
   })
 });
+
+//todo:
+/*
+  concat map-
+  merge map-
+  exhaust map-
+  switch map-
+  error handle
+  DOM click and so i have to 'flush' event
+ */
