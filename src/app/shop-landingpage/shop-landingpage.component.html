@@ -1,7 +1,20 @@
 <p>shop-landingpage works!</p>
+<div class="container-fluid">
+  <div class="row" style="height: 300px">
 
-<ng-container *ngIf="(listOfCarsToDisplay$ | async) as carsToDisplay" >
-    <div *ngFor="let car of carsToDisplay; index as i">
-      <mat-card>{{car.uid}}</mat-card>
+  </div>
+  <div class="row justify-content-evenly">
+    <div class="col-8 text-center">
+
+      <ng-container *ngIf="(listOfCarsToDisplay$ | async) as carsToDisplay" >
+      <mat-tab-group>
+        <div *ngFor="let car of carsToDisplay; index as i">
+          <mat-tab label="{{car.uid}}"> car content </mat-tab>
+        </div>
+      </mat-tab-group>
+      </ng-container>
+
     </div>
-</ng-container>
+  </div>
+</div>
+

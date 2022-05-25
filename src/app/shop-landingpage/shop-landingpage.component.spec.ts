@@ -45,7 +45,7 @@ describe('ShopLandingpageComponent', () => {
 
     fixture.detectChanges();
 
-    const tabs = el.queryAll(By.css('.mat-card'));
+    const tabs = el.queryAll(By.css('.mat-tab-label'));
 
     expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
 
@@ -61,3 +61,4 @@ describe('ShopLandingpageComponent', () => {
   error handle
   DOM click and so i have to 'flush' event
  */
+
