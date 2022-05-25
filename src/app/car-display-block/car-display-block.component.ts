@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CarToBuyModel} from "../model/car-to-buy.model";
 
 @Component({
   selector: 'app-car-display-block',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarDisplayBlockComponent implements OnInit {
 
+  @Input() carData!: CarToBuyModel;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+
+

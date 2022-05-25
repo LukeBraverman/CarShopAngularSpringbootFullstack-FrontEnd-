@@ -9,13 +9,14 @@ import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatTabsModule} from "@angular/material/tabs";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { CarDisplayBlockComponent } from './car-display-block/car-display-block.component';
+import {CarDisplayBlockComponent, } from './car-display-block/car-display-block.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShopLandingpageComponent,
     CarDisplayBlockComponent,
+
   ],
     imports: [CommonModule,
       BrowserAnimationsModule,
