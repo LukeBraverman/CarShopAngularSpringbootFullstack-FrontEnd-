@@ -7,6 +7,8 @@ import {CarListStoreService} from "../store/carlistStore/car-list-store.service"
 import {BehaviorSubject, Observable, of} from "rxjs";
 import {CARSlIST} from "../fakedata/fakedata";
 import {By} from "@angular/platform-browser";
+import {CommonModule} from "@angular/common";
+import {AppModule} from "../app.module";
 
 describe('ShopLandingpageComponent', () => {
   let component: ShopLandingpageComponent;
@@ -18,7 +20,7 @@ describe('ShopLandingpageComponent', () => {
     const carListStoreServiceSpy = jasmine.createSpyObj('CarListStoreService', ['onReturnCarsToDisplayObservable']);
 
     TestBed.configureTestingModule({
-      imports: [
+      imports: [AppModule,
         NoopAnimationsModule
       ],
       providers: [
@@ -46,7 +48,6 @@ describe('ShopLandingpageComponent', () => {
     const tabs = el.queryAll(By.css('.mat-card'));
 
     expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
-
 
   })
 });

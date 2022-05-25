@@ -1,1 +1,7 @@
 <p>shop-landingpage works!</p>
+
+<ng-container *ngIf="(listOfCarsToDisplay$ | async) as carsToDisplay" >
+    <div *ngFor="let car of carsToDisplay; index as i">
+      <mat-card>{{car.uid}}</mat-card>
+    </div>
+</ng-container>
