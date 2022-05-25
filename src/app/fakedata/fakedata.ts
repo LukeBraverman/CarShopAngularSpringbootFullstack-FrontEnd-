@@ -1,20 +1,17 @@
 import {CarToBuyModel} from "../model/car-to-buy.model";
 
-export function returnFakeData() {
-    CARSlIST
+export function returnFakeData () {
+  return CARSlIST
 }
 
-export const CARSlIST= {
-  BMW: {
-    price: 1000,
+export const CARSlIST:CarToBuyModel[] = [
+  {
+    uid: 'AAA'
   },
-
-  HONDA: {
-    price: 600,
+  {
+    uid: 'CCC'
   },
-
-  TOYOYA: {
-    price: 465
+  {
+    uid: 'BBB'
   },
-
-}
+]
