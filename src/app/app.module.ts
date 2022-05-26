@@ -9,7 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatTabsModule} from "@angular/material/tabs";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {CarDisplayBlockComponent, } from './car-display-block/car-display-block.component';
+import {CarDisplayBlockComponent, } from './shop-landingpage/car-display-block/car-display-block.component';
 
 @NgModule({
   declarations: [

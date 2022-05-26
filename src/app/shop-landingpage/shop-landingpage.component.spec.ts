@@ -59,6 +59,5 @@ describe('ShopLandingpageComponent', () => {
   exhaust map-
   switch map-
   error handle
-  DOM click and so i have to 'flush' event
  */
 

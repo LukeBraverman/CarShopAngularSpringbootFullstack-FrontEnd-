@@ -9,7 +9,9 @@
       <ng-container *ngIf="(listOfCarsToDisplay$ | async) as carsToDisplay" >
       <mat-tab-group>
         <div *ngFor="let car of carsToDisplay; index as i">
-          <mat-tab label="{{car.uid}}"> car content </mat-tab>
+          <mat-tab label="{{car.uid}}">
+            <app-car-display-block [carData]="car" (carSelected)="onCarSelcted($event)" > </app-car-display-block>
+          </mat-tab>
         </div>
       </mat-tab-group>
       </ng-container>

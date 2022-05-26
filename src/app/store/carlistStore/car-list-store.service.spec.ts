@@ -43,7 +43,6 @@ describe('CarListStoreService', () => {
 
   it('should GET all 3 cars database', waitForAsync(() => {
     carListStoreService.carsToDisplay$.pipe(skip(1)).subscribe(cars => {
-      console.log(cars.length)
       expect(cars.length).toEqual(3);
       // expect(cars[`BMW`].price).toEqual(10000); // to check price
 

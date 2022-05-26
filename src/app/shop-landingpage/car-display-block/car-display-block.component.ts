@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CarToBuyModel} from "../model/car-to-buy.model";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CarToBuyModel} from "../../model/car-to-buy.model";
 
 @Component({
   selector: 'app-car-display-block',
@@ -9,12 +9,17 @@ import {CarToBuyModel} from "../model/car-to-buy.model";
 export class CarDisplayBlockComponent implements OnInit {
 
   @Input() carData!: CarToBuyModel;
+  @Output() carSelected = new EventEmitter<CarToBuyModel>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSelectCar() {
+    this.carSelected
+      .emit(this.carData);
+  }
 }
 
 
