@@ -38,15 +38,21 @@ export class CarListStoreService {
 
             listOfCars.push({
               // @ts-ignore
-              uid: cars[`BMW`]?.uid
+              uid: cars[`BMW`]?.uid,
+              // @ts-ignore
+              profilePic: cars[`BMW`]?.profilePic,
             });
             listOfCars.push({
               // @ts-ignore
-              uid: cars[`Honda`]?.uid
+              uid: cars[`Honda`]?.uid,
+              // @ts-ignore
+              profilePic: cars[`Honda`]?.profilePic,
             });
             listOfCars.push({
               // @ts-ignore
               uid: cars[`Toyota`]?.uid,
+              // @ts-ignore
+              profilePic: cars[`Toyota`]?.profilePic,
             });
           }
 

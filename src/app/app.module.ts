@@ -10,19 +10,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatTabsModule} from "@angular/material/tabs";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CarDisplayBlockComponent, } from './shop-landingpage/car-display-block/car-display-block.component';
+import { HeaderComponent } from './shop-landingpage/header/header.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
     ShopLandingpageComponent,
     CarDisplayBlockComponent,
+    HeaderComponent,
 
   ],
-    imports: [CommonModule,
-      BrowserAnimationsModule,
-        HttpClientModule, MatCardModule, NgbModule, MatTabsModule
+  imports: [CommonModule,
+    BrowserAnimationsModule,
+    HttpClientModule, MatCardModule, NgbModule, MatTabsModule, MatToolbarModule, MatIconModule
 
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

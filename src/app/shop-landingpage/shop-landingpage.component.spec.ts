@@ -9,6 +9,7 @@ import {CARSlIST} from "../fakedata/fakedata";
 import {By} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
 import {AppModule} from "../app.module";
+import {cold, getTestScheduler} from "jasmine-marbles";
 
 describe('ShopLandingpageComponent', () => {
   let component: ShopLandingpageComponent;
@@ -40,7 +41,7 @@ describe('ShopLandingpageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should display a card for each car retrieved ', () => {
+  it('should display a card for each car retrieved ', () => {
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(of(CARSlIST));
 
     fixture.detectChanges();
@@ -51,7 +52,7 @@ describe('ShopLandingpageComponent', () => {
 
   });
 
-  fit('should display a card for each car retrieved (async) ', fakeAsync(() => {
+  it('should display a card for each car retrieved (async) ', fakeAsync(() => {
 
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(asyncData(CARSlIST));
 
@@ -65,6 +66,24 @@ describe('ShopLandingpageComponent', () => {
     expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
 
   }));
+
+  it('should display a card for each car retrieved (Marble) ',async () => {
+
+    let carsFromDatabase$ = cold('(a|)', {a: CARSlIST});
+
+    carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(carsFromDatabase$);
+
+    fixture.detectChanges();
+    getTestScheduler().flush();
+    fixture.detectChanges();
+
+
+    const tabs = el.queryAll(By.css('.mat-tab-label'));
+
+
+    expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
+
+  });
 });
 /**
  * Create async observable that emits-once and completes

@@ -1,6 +1,7 @@
-<p>car-display-block works!</p>
   <mat-card>
    <p  class="test">  {{carData.uid}} </p>
+    <img mat-card-image src="{{carData.profilePic}}" alt="Photo of a {{carData.uid}}">
+
     <button class="selectButton" (click)="onSelectCar()">Select Car</button>
   </mat-card>
 
