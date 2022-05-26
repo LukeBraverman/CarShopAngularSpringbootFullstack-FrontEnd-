@@ -8,7 +8,6 @@ import {CarToBuyModel} from "../../model/car-to-buy.model";
 import {By} from "@angular/platform-browser";
 import {MatCardModule} from "@angular/material/card";
 import {Component, DebugElement} from "@angular/core";
-import {deepEqual} from "assert";
 
 describe('CarDisplayBlockComponent', () => {
   let component: CarDisplayBlockComponent;

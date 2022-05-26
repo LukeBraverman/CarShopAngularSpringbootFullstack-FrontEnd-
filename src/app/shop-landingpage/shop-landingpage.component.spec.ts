@@ -1,10 +1,10 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import { ShopLandingpageComponent } from './shop-landingpage.component';
 import {DebugElement} from "@angular/core";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
-import {BehaviorSubject, Observable, of} from "rxjs";
+import {BehaviorSubject, defer, Observable, of} from "rxjs";
 import {CARSlIST} from "../fakedata/fakedata";
 import {By} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
@@ -40,7 +40,7 @@ describe('ShopLandingpageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display a card for each car retrieved', () => {
+  fit('should display a card for each car retrieved ', () => {
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(of(CARSlIST));
 
     fixture.detectChanges();
@@ -49,9 +49,30 @@ describe('ShopLandingpageComponent', () => {
 
     expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
 
-  })
-});
+  });
 
+  fit('should display a card for each car retrieved (async) ', fakeAsync(() => {
+
+    carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(asyncData(CARSlIST));
+
+    fixture.detectChanges();
+    tick();// flush the observable to get the quote
+    fixture.detectChanges();
+    tick();// flush the observable to get the quote
+
+    const tabs = el.queryAll(By.css('.mat-tab-label'));
+
+    expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
+
+  }));
+});
+/**
+ * Create async observable that emits-once and completes
+ * after a JS engine turn
+ */
+export function asyncData<T>(data: T) {
+  return defer(() => Promise.resolve(data));
+}
 //todo:
 /*
   concat map-
