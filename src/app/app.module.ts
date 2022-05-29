@@ -13,6 +13,7 @@ import {CarDisplayBlockComponent, } from './shop-landingpage/car-display-block/c
 import { HeaderComponent } from './shop-landingpage/header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {MatIconModule} from "@angular/material/icon";
     ShopLandingpageComponent,
     CarDisplayBlockComponent,
     HeaderComponent,
+    ErrorMessageComponent,
 
   ],
   imports: [CommonModule,

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import {By} from "@angular/platform-browser";
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -22,4 +23,16 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render header content', () => {
+    fixture.detectChanges();
+
+    let headerDe = fixture.debugElement.query(By.css('.headerStyle'));
+    let headerEl = headerDe.nativeElement;
+
+    expect(headerEl.textContent).toContain('Home')
+    expect(headerEl.textContent).toContain('Pricing')
+    expect(headerEl.textContent).toContain('FAQ')
+
+  })
 });

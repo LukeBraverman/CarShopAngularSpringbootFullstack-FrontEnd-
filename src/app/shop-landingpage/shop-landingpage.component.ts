@@ -1,23 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
-import {map, Observable, tap} from "rxjs";
+import {catchError, map, Observable, tap, throwError} from "rxjs";
 import {CarToBuyModel} from "../model/car-to-buy.model";
+import {ErrorMessageService} from "../error-message/error-message.service";
 
 @Component({
   selector: 'app-shop-landingpage',
   templateUrl: './shop-landingpage.component.html',
-  styleUrls: ['./shop-landingpage.component.css']
+  styleUrls: ['./shop-landingpage.component.css'],
+  providers: [ErrorMessageService]
 })
 export class ShopLandingpageComponent implements OnInit {
 
   listOfCarsToDisplay$!: Observable<CarToBuyModel[]>;
 
-  constructor(private carListStoreService:CarListStoreService) { }
+  constructor(private carListStoreService:CarListStoreService,
+              private errorMessageService:ErrorMessageService) { }
 
   ngOnInit(): void {
     this.listOfCarsToDisplay$ =
-      this.carListStoreService.onReturnCarsToDisplayObservable()
-        .pipe( tap(car => console.log(car)));
+      this.carListStoreService.onReturnCarsToDisplayObservable();
+
+    this.carListStoreService.init()
+        .pipe(
+          tap(car => console.log(car )),
+          catchError(err => {
+            const message = "could not get car data";
+            console.log("cAUFHRT IN MAIN")
+            console.log(message, err);
+            this.errorMessageService.showErrors(message);
+            return throwError(err);
+          })).subscribe(res => {
+            this.carListStoreService.emitInitList(res);
+    });
 
 
   }

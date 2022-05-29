@@ -13,7 +13,6 @@ export class AppComponent implements  OnInit {
   }
 
   ngOnInit() {
-    this.carListStoreService.init();
   }
 
 }
