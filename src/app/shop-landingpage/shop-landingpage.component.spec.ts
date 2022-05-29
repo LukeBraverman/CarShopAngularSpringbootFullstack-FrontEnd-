@@ -1,15 +1,15 @@
-import {ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import { ShopLandingpageComponent } from './shop-landingpage.component';
 import {DebugElement} from "@angular/core";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
-import {BehaviorSubject, defer, Observable, of} from "rxjs";
+import { defer, of} from "rxjs";
 import {CARSlIST} from "../fakedata/fakedata";
 import {By} from "@angular/platform-browser";
-import {CommonModule} from "@angular/common";
 import {AppModule} from "../app.module";
 import {cold, getTestScheduler} from "jasmine-marbles";
+import {ErrorMessageService} from "../error-message/error-message.service";
 
 describe('ShopLandingpageComponent', () => {
   let component: ShopLandingpageComponent;
@@ -18,14 +18,15 @@ describe('ShopLandingpageComponent', () => {
   let carListStoreService: any;
 
   beforeEach(waitForAsync(() => {
-    const carListStoreServiceSpy = jasmine.createSpyObj('CarListStoreService', ['onReturnCarsToDisplayObservable']);
+    const carListStoreServiceSpy = jasmine.createSpyObj('CarListStoreService', ['onReturnCarsToDisplayObservable','generateInitialList', 'emitInitList']);
 
     TestBed.configureTestingModule({
       imports: [AppModule,
         NoopAnimationsModule
       ],
       providers: [
-        {provide: CarListStoreService, useValue: carListStoreServiceSpy }
+        {provide: CarListStoreService, useValue: carListStoreServiceSpy },
+        ErrorMessageService
       ]
     }).compileComponents()
       .then(() => {
@@ -42,7 +43,9 @@ describe('ShopLandingpageComponent', () => {
   });
 
   it('should display a card for each car retrieved ', () => {
+
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(of(CARSlIST));
+    carListStoreService.generateInitialList.and.returnValue(of(CARSlIST));
 
     fixture.detectChanges();
 
@@ -55,6 +58,7 @@ describe('ShopLandingpageComponent', () => {
   it('should display a card for each car retrieved (async) ', fakeAsync(() => {
 
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(asyncData(CARSlIST));
+    carListStoreService.generateInitialList.and.returnValue(of(CARSlIST));
 
     fixture.detectChanges();
     tick();// flush the observable to get the quote
@@ -72,6 +76,7 @@ describe('ShopLandingpageComponent', () => {
     let carsFromDatabase$ = cold('(a|)', {a: CARSlIST});
 
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(carsFromDatabase$);
+    carListStoreService.generateInitialList.and.returnValue(of(carsFromDatabase$));
 
     fixture.detectChanges();
     getTestScheduler().flush();

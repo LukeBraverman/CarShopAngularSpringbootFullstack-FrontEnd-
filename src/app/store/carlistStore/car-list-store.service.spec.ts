@@ -34,7 +34,9 @@ describe('CarListStoreService', () => {
 
     });
 
-    carListStoreService.init();
+    carListStoreService.generateInitialList().subscribe(res => {
+      carListStoreService.emitInitList(res);
+    });
 
     const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
     expect(req.request.method).toEqual('GET');
@@ -44,11 +46,11 @@ describe('CarListStoreService', () => {
   it('should GET all 3 cars database', waitForAsync(() => {
     carListStoreService.carsToDisplay$.pipe(skip(1)).subscribe(cars => {
       expect(cars.length).toEqual(3);
-      // expect(cars[`BMW`].price).toEqual(10000); // to check price
-
     });
 
-    carListStoreService.init();
+    carListStoreService.generateInitialList().subscribe(res => {
+      carListStoreService.emitInitList(res);
+    });
 
     const req = httpTestingController.expectOne('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
     expect(req.request.method).toEqual('GET');

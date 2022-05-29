@@ -21,12 +21,10 @@ export class ShopLandingpageComponent implements OnInit {
     this.listOfCarsToDisplay$ =
       this.carListStoreService.onReturnCarsToDisplayObservable();
 
-    this.carListStoreService.init()
+    this.carListStoreService.generateInitialList()
         .pipe(
-          tap(car => console.log(car )),
           catchError(err => {
             const message = "could not get car data";
-            console.log("cAUFHRT IN MAIN")
             console.log(message, err);
             this.errorMessageService.showErrors(message);
             return throwError(err);
