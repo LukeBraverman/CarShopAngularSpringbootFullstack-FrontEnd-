@@ -30,7 +30,8 @@ export class ShopLandingpageComponent implements OnInit {
             return throwError(err);
           })).subscribe(res => {
             this.carListStoreService.emitInitList(res);
-    });
+    },
+      );
 
 
   }

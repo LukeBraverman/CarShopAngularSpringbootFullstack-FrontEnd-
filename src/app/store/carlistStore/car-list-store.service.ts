@@ -64,7 +64,7 @@ export class CarListStoreService {
   }
 
   private findAllCars() {
-    return this.http.get('https://carshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
+    return this.http.get('https://Ecarshop-a3938-default-rtdb.europe-west1.firebasedatabase.app/CARS.json');
   }
 
 }

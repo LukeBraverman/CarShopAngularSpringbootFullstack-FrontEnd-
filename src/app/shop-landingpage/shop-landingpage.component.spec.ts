@@ -4,7 +4,7 @@ import { ShopLandingpageComponent } from './shop-landingpage.component';
 import {DebugElement} from "@angular/core";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
-import { defer, of} from "rxjs";
+import {defer, of, throwError} from "rxjs";
 import {CARSlIST} from "../fakedata/fakedata";
 import {By} from "@angular/platform-browser";
 import {AppModule} from "../app.module";
@@ -89,6 +89,21 @@ describe('ShopLandingpageComponent', () => {
     expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
 
   });
+
+  fit('should give an error if cannot get courses from database', () => {
+    carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(throwError({status:404}));
+    carListStoreService.generateInitialList.and.returnValue(throwError({status:404}));
+    fixture.detectChanges();
+
+    const tabs = el.queryAll(By.css('.mat-tab-label'));
+    const errorMessage = fixture.debugElement.query(By.css('.message'));
+    const errorMessageNe = errorMessage.nativeElement;
+
+
+    expect(tabs.length).toBe(0, 'Unexpected number of tabs found');
+    expect(errorMessageNe).toBeTruthy();
+
+  })
 });
 /**
  * Create async observable that emits-once and completes
