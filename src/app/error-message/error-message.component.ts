@@ -14,6 +14,8 @@ export class ErrorMessageComponent implements OnInit {
   errors$!: Observable<string[]>;
 
 
+
+
   constructor(public messagesService: ErrorMessageService) {
 
     console.log("Created messages component");
@@ -21,7 +23,7 @@ export class ErrorMessageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.errors$ = this.messagesService.errors$
+    this.errors$ = this.messagesService.returnErrorObservable()
       .pipe(
         tap(() => this.showMessages = true)
       );
