@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable, tap} from "rxjs";
-import {ErrorMessageService} from "./error-message.service";
+import {ErrorMessageService} from "./service/error-message.service";
 
 @Component({
   selector: 'app-error-message',

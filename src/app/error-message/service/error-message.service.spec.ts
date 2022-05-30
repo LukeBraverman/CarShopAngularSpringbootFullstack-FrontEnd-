@@ -1,7 +1,7 @@
 import {ErrorMessageService} from "./error-message.service";
 import {TestBed} from "@angular/core/testing";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
+import {CarListStoreService} from "../../store/carlistStore/car-list-store.service";
 
 describe('ErrorMessageService', () => {
 

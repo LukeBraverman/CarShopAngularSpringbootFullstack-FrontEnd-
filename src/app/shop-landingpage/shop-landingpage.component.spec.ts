@@ -9,7 +9,7 @@ import {CARSlIST} from "../fakedata/fakedata";
 import {By} from "@angular/platform-browser";
 import {AppModule} from "../app.module";
 import {cold, getTestScheduler} from "jasmine-marbles";
-import {ErrorMessageService} from "../error-message/error-message.service";
+import {ErrorMessageService} from "../error-message/service/error-message.service";
 
 describe('ShopLandingpageComponent', () => {
   let component: ShopLandingpageComponent;

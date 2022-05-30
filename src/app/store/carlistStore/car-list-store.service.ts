@@ -3,7 +3,7 @@ import {BehaviorSubject, catchError, map, Observable, shareReplay, tap, throwErr
 import {CarToBuyModel} from "../../model/car-to-buy.model";
 import {HttpClient} from "@angular/common/http";
 import {CARSlIST} from "../../fakedata/fakedata";
-import {ErrorMessageService} from "../../error-message/error-message.service";
+import {ErrorMessageService} from "../../error-message/service/error-message.service";
 
 @Injectable({
   providedIn: 'root'

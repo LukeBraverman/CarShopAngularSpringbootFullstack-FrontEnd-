@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CarListStoreService} from "../store/carlistStore/car-list-store.service";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
 import {CarToBuyModel} from "../model/car-to-buy.model";
-import {ErrorMessageService} from "../error-message/error-message.service";
+import {ErrorMessageService} from "../error-message/service/error-message.service";
 
 @Component({
   selector: 'app-shop-landingpage',

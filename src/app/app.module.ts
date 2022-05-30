@@ -14,6 +14,7 @@ import { HeaderComponent } from './shop-landingpage/header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     CarDisplayBlockComponent,
     HeaderComponent,
     ErrorMessageComponent,
+    LoadingSpinnerComponent,
 
   ],
   imports: [CommonModule,
