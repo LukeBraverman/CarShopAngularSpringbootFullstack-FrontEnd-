@@ -15,6 +15,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
   ],
   imports: [CommonModule,
     BrowserAnimationsModule,
-    HttpClientModule, MatCardModule, NgbModule, MatTabsModule, MatToolbarModule, MatIconModule
+    HttpClientModule, MatCardModule, NgbModule, MatTabsModule, MatToolbarModule, MatIconModule, MatProgressSpinnerModule
 
   ],
   providers: [],
