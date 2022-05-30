@@ -17,7 +17,7 @@ describe('ErrorMessageComponent', () => {
 
   beforeEach(async () => {
 
-    const errorMessageServiceSpy = jasmine.createSpyObj('ErrorMessageService', ['showErrors', 'returnErrorObservable'] )
+    const errorMessageServiceSpy = jasmine.createSpyObj('LoadingSpinnerService', ['showErrors', 'returnErrorObservable'] )
 
     await TestBed.configureTestingModule({
       imports: [AppModule, NoopAnimationsModule],
