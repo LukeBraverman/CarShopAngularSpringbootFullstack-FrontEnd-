@@ -41,8 +41,19 @@ fdescribe('LoadingSpinnerComponent', () => {
 
     const errorMessageClassDe = fixture.debugElement.queryAll(By.css('.spinner'));
 
-    expect(errorMessageClassDe).toBeTruthy();
+    expect(errorMessageClassDe.length).toBe(0);
 
   });
 
+  it('should  display loading spinner if true received', () => {
+
+    loadingSpinnerService.returnLoadingSpinnerObservable.and.returnValue(of(true));
+
+    fixture.detectChanges();
+
+    const errorMessageClassDe = fixture.debugElement.queryAll(By.css('.spinner'));
+
+    expect(errorMessageClassDe.length).toBe(1);
+
+  });
 });
