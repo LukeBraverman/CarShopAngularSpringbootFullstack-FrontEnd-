@@ -3,7 +3,7 @@ import {CarListStoreService} from "../store/carlistStore/car-list-store.service"
 import {catchError, delay, map, Observable, tap, throwError} from "rxjs";
 import {CarToBuyModel} from "../model/car-to-buy.model";
 import {ErrorMessageService} from "../error-message/service/error-message.service";
-import {LoadingSpinnerService} from "../loading-spinner/loading-spinner.service";
+import {LoadingSpinnerService} from "../loading-spinner/service/loading-spinner.service";
 
 @Component({
   selector: 'app-shop-landingpage',
@@ -29,7 +29,6 @@ export class ShopLandingpageComponent implements OnInit {
           delay(2000),
           catchError(err => {
             const message = "could not get car data";
-            console.log(message, err);
             this.errorMessageService.showErrors(message);
             return throwError(err);
           })).subscribe(res => {

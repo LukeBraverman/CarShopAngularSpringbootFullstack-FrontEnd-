@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoadingSpinnerComponent } from './loading-spinner.component';
-import {LoadingSpinnerService} from "./loading-spinner.service";
+import {LoadingSpinnerService} from "./service/loading-spinner.service";
 import {of} from "rxjs";
 import {By} from "@angular/platform-browser";
 
-fdescribe('LoadingSpinnerComponent', () => {
+describe('LoadingSpinnerComponent', () => {
   let component: LoadingSpinnerComponent;
   let fixture: ComponentFixture<LoadingSpinnerComponent>;
   let loadingSpinnerService:any;

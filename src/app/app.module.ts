@@ -16,6 +16,8 @@ import {MatIconModule} from "@angular/material/icon";
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {AppRoutingModule} from "./app-routing.module";
+import { PricingComponent } from './pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     HeaderComponent,
     ErrorMessageComponent,
     LoadingSpinnerComponent,
+    PricingComponent,
+
 
   ],
   imports: [CommonModule,
     BrowserAnimationsModule,
-    HttpClientModule, MatCardModule, NgbModule, MatTabsModule, MatToolbarModule, MatIconModule, MatProgressSpinnerModule
-
+    HttpClientModule, MatCardModule, NgbModule, MatTabsModule, MatToolbarModule, MatIconModule, MatProgressSpinnerModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

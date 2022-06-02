@@ -52,7 +52,6 @@ export class CarListStoreService {
         }
 
         return listOfCars;
-        // this.subject.next(listOfCars)
       }),
         shareReplay()
       );

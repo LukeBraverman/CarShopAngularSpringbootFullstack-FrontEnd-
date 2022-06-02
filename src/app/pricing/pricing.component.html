@@ -1,0 +1,38 @@
+<p>pricing works!</p>
+<app-error-message></app-error-message>
+<div>
+  <ng-container *ngIf="!activeCar; else detail">
+    <ng-container *ngIf="(carList$ | async  ) as carList" >
+
+      <table class="lessons-table mat-elevation-z7">
+
+        <thead>
+        <th>#</th>
+        <th>CarUID</th>
+
+        </thead>
+
+        <tr class="lesson-row" *ngFor="let car of carList; let i = index"
+            (click)="openCarDetail(car)">
+          <td class="seqno-cell">{{i}}</td>
+          <td class="carUID-cell">{{car.uid}}</td>
+
+        </tr>
+
+      </table>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #detail>
+
+    <button mat-raised-button class="back-btn" (click)="onBackToPriceList()">
+      <mat-icon>arrow_back_ios</mat-icon>
+      Back to Search
+    </button>
+
+
+
+  </ng-template>
+
+</div>
+

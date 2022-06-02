@@ -1,4 +1,13 @@
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {
+  ComponentFixture,
+  discardPeriodicTasks,
+  fakeAsync,
+  flush,
+  flushMicrotasks,
+  TestBed,
+  tick,
+  waitForAsync
+} from '@angular/core/testing';
 
 import { ShopLandingpageComponent } from './shop-landingpage.component';
 import {DebugElement} from "@angular/core";
@@ -10,6 +19,7 @@ import {By} from "@angular/platform-browser";
 import {AppModule} from "../app.module";
 import {cold, getTestScheduler} from "jasmine-marbles";
 import {ErrorMessageService} from "../error-message/service/error-message.service";
+import {LoadingSpinnerService} from "../loading-spinner/service/loading-spinner.service";
 
 describe('ShopLandingpageComponent', () => {
   let component: ShopLandingpageComponent;
@@ -26,7 +36,8 @@ describe('ShopLandingpageComponent', () => {
       ],
       providers: [
         {provide: CarListStoreService, useValue: carListStoreServiceSpy },
-        ErrorMessageService
+        ErrorMessageService,
+        LoadingSpinnerService
       ]
     }).compileComponents()
       .then(() => {
@@ -64,11 +75,12 @@ describe('ShopLandingpageComponent', () => {
     tick();// flush the observable to get the quote
     fixture.detectChanges();
     tick();// flush the observable to get the quote
-
+    flush();
+    flushMicrotasks();
     const tabs = el.queryAll(By.css('.mat-tab-label'));
 
     expect(tabs.length).toBe(3, 'Unexpected number of tabs found');
-
+    discardPeriodicTasks() //to check
   }));
 
   it('should display a card for each car retrieved (Marble) ',async () => {
@@ -90,7 +102,7 @@ describe('ShopLandingpageComponent', () => {
 
   });
 
-  fit('should give an error if cannot get courses from database', () => {
+  it('should give an error if cannot get courses from database', () => {
     carListStoreService.onReturnCarsToDisplayObservable.and.returnValue(throwError({status:404}));
     carListStoreService.generateInitialList.and.returnValue(throwError({status:404}));
     fixture.detectChanges();
@@ -103,7 +115,8 @@ describe('ShopLandingpageComponent', () => {
     expect(tabs.length).toBe(0, 'Unexpected number of tabs found');
     expect(errorMessageNe).toBeTruthy();
 
-  })
+  });
+
 });
 /**
  * Create async observable that emits-once and completes
